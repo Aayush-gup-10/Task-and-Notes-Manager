@@ -12,6 +12,10 @@ app.use('/', express.static(__dirname + '/public'))
 
 app.use('/tasks', taskRoute)
 
+app.get('/', function(request, response) {
+  response.send('Hello World!');
+  });
+
 db.sync()
   .then(() => {
     app.listen(process.env.PORT || 3333)
