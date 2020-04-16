@@ -8,13 +8,13 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use('/', express.static(__dirname + '/public'))
+app.use('/', express.static(__dirname + '/Public'))
 
 app.use('/tasks', taskRoute)
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
-  });
+// app.get('/', function(request, response) {
+//   response.send('Hello World!');
+//   });
 
 db.sync()
   .then(() => {
