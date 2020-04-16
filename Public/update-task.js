@@ -16,7 +16,7 @@ $(function () {
             taskStatus.val(),
             taskPriority.val(),
             function () {
-                window.alert("Updated in Database")
+                window.alert("Task gets Updated")
                 location.reload(true)
             }
         )

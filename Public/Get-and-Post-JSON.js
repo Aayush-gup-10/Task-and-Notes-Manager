@@ -39,17 +39,18 @@ function updateTask (id,title, description, due, status, priority, done) {
      })
 }
 
-function createTask (task) {
-    return $(`
-        <tr>
-        <td><button onclick="getTaskforTaskCard(${task.id});openTaskCard()"> +</button></td>
-        <td> ${task.title} </td>
-        <td> ${task.status} </td>
-        <td> ${task.priority} </td>
-        <td> ${task.description} </td>
-        <td> ${task.due} </td>
-        <td> <button id="updateTask" onclick="openUpdateForm(${task.id})" class="btn btn-secondary">Edit</button> </td>
-        </tr>
-    `
-    )
+function fetchnote(id,done){
+    $.get('/tasks/'+id+'/notes', function(data){
+    done(data)
+  })
 }
+
+function addNoteforTask(id,text,done){
+    $.post('/tasks/'+id+'/notes', {
+        text: text,
+        task_id: id
+    }, function (data) {
+        done(data)
+    })
+}
+
